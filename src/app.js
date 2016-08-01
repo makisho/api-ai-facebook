@@ -38,7 +38,10 @@ function processEvent(event) {
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
                 let responseText = response.result.fulfillment.speech;
+                //let responseData = response.result.fulfillment.data;
                 let responseData = response.result.fulfillment.data;
+                
+                
                 let action = response.result.action;
 
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
@@ -58,7 +61,8 @@ function processEvent(event) {
                                 }
                                 else {
                                     console.log('Response as formatted message');
-                                    sendFBMessage(sender, facebookMessage);
+                                    //sendFBMessage(sender, facebookMessage);
+                                    sendFBMessage(sender, {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}});
                                 }
                             } catch (err) {
                                 sendFBMessage(sender, {text: err.message});
