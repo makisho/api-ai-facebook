@@ -121,7 +121,8 @@ function chunkString(s, len) {
 }
 
 function sendFBMessage(sender, messageData, callback) {
-    alert('sendFBMessage')
+    alert('sendFBMessage');
+    
     
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
