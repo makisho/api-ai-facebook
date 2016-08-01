@@ -28,7 +28,7 @@ function processEvent(event) {
             sessionIds.set(sender, uuid.v1());
         }
 
-        console.log("Text", text);
+        console.log("Text Makisho", text);
 
         let apiaiRequest = apiAiService.textRequest(text,
             {
