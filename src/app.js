@@ -140,6 +140,7 @@ function sendFBMessage(sender, messageData, callback) {
             recipient: {id: sender},
             //message: messageData
             message: {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}}
+            
         }
     }, (error, response, body) => {
         if (error) {
