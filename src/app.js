@@ -61,14 +61,8 @@ function processEvent(event) {
                                 }
                                 else {
                                     console.log('Response as formatted message');
-<<<<<<< HEAD
                                     sendFBMessage(sender, facebookMessage);
-                                    
-=======
-                                     console.log('Response as formatted message');
-                                    //sendFBMessage(sender, facebookMessage);
-                                    sendFBMessage(sender, {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}});
->>>>>>> origin/master
+
                                 }
                             } catch (err) {
                                 sendFBMessage(sender, {text: err.message});
