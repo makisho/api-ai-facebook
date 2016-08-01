@@ -61,8 +61,8 @@ function processEvent(event) {
                                 }
                                 else {
                                     console.log('Response as formatted message');
-                                    //sendFBMessage(sender, facebookMessage);
-                                    sendFBMessage(sender, {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}});
+                                    sendFBMessage(sender, facebookMessage);
+                                    
                                 }
                             } catch (err) {
                                 sendFBMessage(sender, {text: err.message});
@@ -132,7 +132,8 @@ function sendFBMessage(sender, messageData, callback) {
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: messageData
+            //message: messageData
+            message: {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}}
         }
     }, (error, response, body) => {
         if (error) {
