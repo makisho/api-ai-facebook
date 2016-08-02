@@ -138,13 +138,13 @@ function sendFBMessage(sender, messageData, callback) {
         "template_type":"generic",
         "elements":[
           {
-            "title":"Welcome to Peter\'s Hats",
-            "image_url":"http://petersapparel.parseapp.com/img/item100-thumb.png",
-            "subtitle":"We\'ve got the right hat for everyone.",
+            "title":"Bienvenido a HolaTiguan",
+            "image_url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png",
+            "subtitle":"Descubre el Nuevo Tiguan.",
             "buttons":[
               {
                 "type":"web_url",
-                "url":"https://petersapparel.parseapp.com/view_item?item_id=100",
+                "url":"https://holatiguan.com",
                 "title":"View Website"
               },
               {"type":"postback","title":"Start Chatting","payload":"USER_DEFINED_PAYLOAD"}]}]}}}
