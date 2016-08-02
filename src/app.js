@@ -139,7 +139,8 @@ function sendFBMessage(sender, messageData, callback) {
         "elements":[
           {
             "title":"Bienvenido a HolaTiguan",
-            "image_url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png",
+            //"image_url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png",
+            "video_url":"https://holatiguan.com/uploads/docs/2/1/-/21-enciende-luces_v2.mp4",
             "subtitle":"Descubre el Nuevo Tiguan.",
             "buttons":[
               {
