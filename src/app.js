@@ -37,13 +37,15 @@ function processEvent(event) {
 
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
+                console.log(' apiaiRequest > '+response.result);
                 let responseText = response.result.fulfillment.speech;
                 //let responseData = response.result.fulfillment.data;
                 let responseData = response.result.fulfillment.data;
                 
                 
                 let action = response.result.action;
-
+                console.log(' apiaiRequest response.result.action > '+response.result.action);
+                
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     if (!Array.isArray(responseData.facebook)) {
                         try {
