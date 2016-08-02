@@ -51,6 +51,7 @@ function processEvent(event) {
                         try {
                             console.log('Response as formatted message');
                             sendFBMessage(sender, responseData.facebook);
+                            console.log(' apiaiRequest sendFBMessage > '+responseData.facebook);
                         } catch (err) {
                             sendFBMessage(sender, {text: err.message});
                         }
