@@ -138,9 +138,9 @@ function sendFBMessage(sender, messageData, callback) {
         "template_type":"generic",
         "elements":[
           {
-            "title":"HolaTiguan. Descubre el Nuevo Tiguan. ",
+            "title":"HolaTiguan.com\nDescubre el Nuevo Tiguan. ",
             "image_url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png",
-            "subtitle":"Pregúntame lo que quieras saber",
+            "subtitle":"Pregúntame todo lo que quieras saber.",
             "buttons":[
               {
                 "type":"web_url",
