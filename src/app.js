@@ -1,3 +1,10 @@
+// https://developers.facebook.com/docs/messenger-platform/send-api-reference/generic-template 
+// https://developers.facebook.com/apps/177221719342534/webhooks/
+// https://github.com/makisho/api-ai-facebook/blob/master/src/app.js
+// https://dashboard.heroku.com/apps/intense-cove-74475/logs
+// https://discuss.api.ai/t/test-clan-facebook-messenger-bot/814/3
+
+
 'use strict';
 
 const apiai = require('apiai');
