@@ -46,11 +46,9 @@ function processEvent(event) {
             if (isDefined(response.result)) {
                 console.log(' apiaiRequest 1 set >>>> '+response.result);
                 let responseText = response.result.fulfillment.speech;
-                //let responseData = response.result.fulfillment.data;
                 let responseData = response.result.fulfillment.data;
-                
-                
                 let action = response.result.action;
+                
                 console.log(' apiaiRequest response.result.action > '+response.result.action);
                 
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
@@ -78,7 +76,7 @@ function processEvent(event) {
                         });
                     }
                 } else if (isDefined(responseText)) {
-                    console.log('Response as text message');
+                    console.log('Response as splittedText message');
                     // facebook API limit for text length is 320,
                     // so we must split message if needed
                     var splittedText = splitResponse(responseText);
@@ -140,22 +138,24 @@ function sendFBMessage(sender, messageData, callback) {
         method: 'POST',
         json: {
             recipient: {id: sender},
-            //message: messageData
+            message: messageData
             //message: {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}}
+            /*
             message: { "attachment":{"type":"template","payload":{
-        "template_type":"generic",
-        "elements":[
-          {
-            "title":"HolaTiguan.com\nDescubre el Nuevo Tiguan. ",
-            "image_url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png",
-            "subtitle":"Pregúntame todo lo que quieras saber.",
-            "buttons":[
-              {
-                "type":"web_url",
-                "url":"https://holatiguan.com",
-                "title":"View Website"
-              },
-              {"type":"postback","title":"Start Chatting","payload":"USER_DEFINED_PAYLOAD"}]}]}}}
+                "template_type":"generic",
+                "elements":[
+                  {
+                    "title":"HolaTiguan.com\nDescubre el Nuevo Tiguan. ",
+                    "image_url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png",
+                    "subtitle":"Pregúntame todo lo que quieras saber.",
+                    "buttons":[
+                      {
+                        "type":"web_url",
+                        "url":"https://holatiguan.com",
+                        "title":"View Website"
+                      },
+                      {"type":"postback","title":"Start Chatting","payload":"USER_DEFINED_PAYLOAD"}]}]}}}
+            */
             
         }
     }, (error, response, body) => {
