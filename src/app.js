@@ -55,20 +55,20 @@ function processEvent(event) {
                     if (!Array.isArray(responseData.facebook)) {
                         try {
                             console.log('Response as formatted message');
-                            sendFBMessage(sender, responseData.facebook);
-                        } catch (err) {
-                            sendFBMessage(sender, {text: err.message});
+                            sendFBMessage(action, sender, responseData.facebook);
+                        } catch (err) { 
+                            sendFBMessage(action, sender, {text: err.message});
                         }
                     } else {
                         responseData.facebook.forEach((facebookMessage) => {
                             try {
                                 if (facebookMessage.sender_action) {
                                     console.log('Response as sender action');
-                                    sendFBSenderAction(sender, facebookMessage.sender_action);
+                                    sendFBSenderAction(action, sender, facebookMessage.sender_action);
                                 }
                                 else {
                                     console.log('Response as formatted message');
-                                    sendFBMessage(sender, facebookMessage);
+                                    sendFBMessage(action, sender, facebookMessage);
                                 }
                             } catch (err) {
                                 sendFBMessage(sender, {text: err.message});
@@ -82,7 +82,7 @@ function processEvent(event) {
                     var splittedText = splitResponse(responseText);
 
                     async.eachSeries(splittedText, (textPart, callback) => {
-                        sendFBMessage(sender, {text: textPart}, callback);
+                        sendFBMessage(action, sender, {text: textPart}, callback);
                     });
                 }
 
@@ -130,13 +130,11 @@ function chunkString(s, len) {
     return output;
 }
 
-function sendFBMessage(sender, messageData, callback) {
+function sendFBMessage(action, sender, messageData, callback) {
 
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: FB_PAGE_ACCESS_TOKEN},
-        method: 'POST',
-        json: {
+    var _action = action;
+    console.log('sendFBMessage _action: '+_action)
+    var _myjson = {
             recipient: {id: sender},
             message: messageData
             //message: {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}}
@@ -158,6 +156,13 @@ function sendFBMessage(sender, messageData, callback) {
             */
             
         }
+    
+    
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: FB_PAGE_ACCESS_TOKEN},
+        method: 'POST',
+        json:_myjson 
     }, (error, response, body) => {
         if (error) {
             console.log('Error sending message: ', error);
