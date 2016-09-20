@@ -133,8 +133,8 @@ function chunkString(s, len) {
 function sendFBMessage(action, sender, messageData, callback) {
 
     var _action = action;
-    console.log('sendFBMessage _action: '+_action)
-    console.log('sendFBMessage messageData: '+messageData)
+    console.log('sendFBMessage _action: '+_action);
+    console.log('sendFBMessage messageData: '+json.stringify(messageData);
     var _myjson = {
             recipient: {id: sender},
             message: messageData
