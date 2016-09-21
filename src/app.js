@@ -44,7 +44,7 @@ function processEvent(event) {
 
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
-                console.log(' apiaiRequest 1 set string >>>> '+JSON.stringfy(response.result));
+                console.log(' apiaiRequest 1 set string >>>> '+JSON.stringify(response.result));
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
