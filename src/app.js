@@ -44,7 +44,7 @@ function processEvent(event) {
 
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
-                console.log(' apiaiRequest 1 set >>>> '+response.result);
+                console.log(' apiaiRequest 1 set parse >>>> '+JSON.stringfy(response.result);
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
@@ -138,7 +138,7 @@ function sendFBMessage(action, sender, messageData, callback) {
 
     var _myjson = {
             recipient: {id: sender},
-            message: JSON.parse(_action) //messageData
+            message:  _action //messageData
             //message: {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}}
             /*
             message: { "attachment":{"type":"template","payload":{
