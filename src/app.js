@@ -140,7 +140,7 @@ function sendFBMessage(action, sender, messageData, callback) {
     
     var _myjson = {
             recipient: {id: sender},
-            message: messageData
+            message: _action //messageData
             //message: {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}}
             /*
             message: { "attachment":{"type":"template","payload":{
