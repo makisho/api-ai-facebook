@@ -134,11 +134,8 @@ function sendFBMessage(action, sender, messageData, callback) {
 
     var _action = action;
     console.log('sendFBMessage _action(string): '+JSON.stringify(_action)); 
-    console.log('sendFBMessage _action(parsed): '+JSON.parse(_action)); 
     console.log('sendFBMessage messageData: '+JSON.stringify(messageData));
-    
-    
-    
+
     var _myjson = {
             recipient: {id: sender},
             message: JSON.parse(_action) //messageData
