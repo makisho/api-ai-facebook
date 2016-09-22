@@ -55,8 +55,8 @@ function processEvent(event) {
                     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
                 } 
                 
-                responseParams = tmp.replaceAll("^", "{");
-                responseParams = tmp.replaceAll("*", "}");
+                var r1 = tmp.replaceAll("^", "{");
+                responseParams = r1.replaceAll("*", "}");
             
                 console.log('-------------------------------')
                 console.log('apiaiRequest responseParams >>>>>>>>  '+responseParams);        
