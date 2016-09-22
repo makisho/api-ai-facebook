@@ -61,7 +61,7 @@ function processEvent(event) {
                 
                 console.log(' apiaiRequest response.result.action > '+response.result.action);
                 
-                if(tmp.toString()!="undefined"){
+                if(tmp!="undefined"){
                     var r1 = tmp.replaceAll("^", "{");
                     responseParams = r1.replaceAll("*", "}");
                     console.log('-------------------------------')
