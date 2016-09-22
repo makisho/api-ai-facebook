@@ -55,18 +55,21 @@ function processEvent(event) {
                     return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
                 } 
                 
-                var r1 = tmp.replaceAll("^", "{");
-                responseParams = r1.replaceAll("*", "}");
-            
-                console.log('-------------------------------')
-                console.log('apiaiRequest responseParams >>>>>>>>  '+responseParams);        
-                console.log('-------------------------------')
+               
                 
                 let action = response.result.action;
                 
                 console.log(' apiaiRequest response.result.action > '+response.result.action);
                 
-                if (isDefined(responseData) && isDefined(responseData.facebook)) {
+                if(tmp.toString()!="undefined"){
+                    var r1 = tmp.replaceAll("^", "{");
+                    responseParams = r1.replaceAll("*", "}");
+                    console.log('-------------------------------')
+                    console.log('apiaiRequest responseParams >>>>>>>>  '+responseParams);        
+                    console.log('-------------------------------')
+                    sendFBMessage(action, sender, responseParams);      
+                }
+                else if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     if (!Array.isArray(responseData.facebook)) {
                         try {
                             console.log('Response as formatted message');
@@ -153,7 +156,7 @@ function sendFBMessage(action, sender, messageData, callback) {
 
     var _myjson = {
             recipient: {id: sender},
-            message:  responseParams//messageData
+            message:  messageData
             //message: {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}}
             /*
             message: { "attachment":{"type":"template","payload":{
