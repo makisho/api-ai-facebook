@@ -48,7 +48,7 @@ function processEvent(event) {
                 console.log(' apiaiRequest 1 set string >>>> '+JSON.stringify(response.result));
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
-                let tmp = response.result.parameters.template;
+                let tmp = response.result.parameters.FBtemplate;
                                
                 String.prototype.replaceAll = function(str1, str2, ignore) 
                 {
@@ -61,7 +61,8 @@ function processEvent(event) {
                 
                 console.log(' apiaiRequest response.result.action > '+response.result.action);
                 
-                if(tmp!="undefined"){
+                if(tmp!=undefined){
+                    console.log('HAY FACEBOOK DATA');
                     var r1 = tmp.replaceAll("^", "{");
                     responseParams = r1.replaceAll("*", "}");
                     console.log('-------------------------------')
