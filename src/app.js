@@ -50,7 +50,7 @@ function processEvent(event) {
                 let responseData = response.result.fulfillment.data;
                 responseParams = response.result.parameters.template;
                 console.log('-------------------------------')
-                console.log('apiaiRequest responseParams >>>>>>>>  '+JSON.stringify(responseParams));
+                console.log('apiaiRequest responseParams >>>>>>>>  '+JSON.parse(responseParams));
                 console.log('-------------------------------')
                 let action = response.result.action;
                 
@@ -143,7 +143,7 @@ function sendFBMessage(action, sender, messageData, callback) {
 
     var _myjson = {
             recipient: {id: sender},
-            message:  responseParams//messageData
+            message:  JSON.parse(responseParams)//messageData
             //message: {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}}
             /*
             message: { "attachment":{"type":"template","payload":{
