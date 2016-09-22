@@ -56,6 +56,7 @@ function processEvent(event) {
                 } 
                 
                 responseParams = tmp.replaceAll("^", "{");
+                responseParams = tmp.replaceAll("*", "}");
             
                 console.log('-------------------------------')
                 console.log('apiaiRequest responseParams >>>>>>>>  '+responseParams);        
