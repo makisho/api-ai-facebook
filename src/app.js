@@ -61,6 +61,10 @@ function processEvent(event) {
                 let action = response.result.action;
                 
                 console.log(' apiaiRequest response.result.action > '+response.result.action);
+                console.log(' apiaiRequest FBtemplate > '+FBtemplate);
+                console.log(' apiaiRequest FBimage > '+FBimage);
+                
+                
                 
                 if(FBtemplate!=undefined){
                     console.log('HAY FACEBOOK DATA');
@@ -72,13 +76,9 @@ function processEvent(event) {
                     sendFBMessage(action, sender, responseParams);      
                 }
                 else if(FBimage!=undefined){
-                    if (isDefined(responseData) && isDefined(responseData.facebook)) {
-                        try {
-                            sendFBMessage(action, sender, responseData.facebook);
-                        } catch (err) { 
-                            sendFBMessage(action, sender, {text: err.message});
-                        }
-                    }
+                   
+                    sendFBMessage(action, sender, {text: responseText});
+                    
                     var r1 = FBimage.replaceAll("^", "{");
                     responseParams = r1.replaceAll("*", "}");
                     sendFBMessage(action, sender, responseParams); 
@@ -103,7 +103,7 @@ function processEvent(event) {
                                     sendFBMessage(action, sender, facebookMessage);
                                 }
                             } catch (err) {
-                                sendFBMessage(sender, {text: err.message});
+                                sendFBMessage(sender, {text: err.message});responseText
                             }
                         });
                     }
