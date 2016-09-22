@@ -48,7 +48,8 @@ function processEvent(event) {
                 console.log(' apiaiRequest 1 set string >>>> '+JSON.stringify(response.result));
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
-                let tmp = response.result.parameters.FBtemplate;
+                let FBtemplate = response.result.parameters.FBtemplate;
+                let FBimage = response.result.parameters.FBimage;
                                
                 String.prototype.replaceAll = function(str1, str2, ignore) 
                 {
@@ -61,14 +62,26 @@ function processEvent(event) {
                 
                 console.log(' apiaiRequest response.result.action > '+response.result.action);
                 
-                if(tmp!=undefined){
+                if(FBtemplate!=undefined){
                     console.log('HAY FACEBOOK DATA');
-                    var r1 = tmp.replaceAll("^", "{");
+                    var r1 = FBtemplate.replaceAll("^", "{");
                     responseParams = r1.replaceAll("*", "}");
                     console.log('-------------------------------')
                     console.log('apiaiRequest responseParams >>>>>>>>  '+responseParams);        
                     console.log('-------------------------------')
                     sendFBMessage(action, sender, responseParams);      
+                }
+                else if(FBimage!=undefined){
+                    if (isDefined(responseData) && isDefined(responseData.facebook)) {
+                        try {
+                            sendFBMessage(action, sender, responseData.facebook);
+                        } catch (err) { 
+                            sendFBMessage(action, sender, {text: err.message});
+                        }
+                    }
+                    var r1 = FBimage.replaceAll("^", "{");
+                    responseParams = r1.replaceAll("*", "}");
+                    sendFBMessage(action, sender, responseParams); 
                 }
                 else if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     if (!Array.isArray(responseData.facebook)) {
