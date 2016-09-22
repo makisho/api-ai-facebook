@@ -48,10 +48,13 @@ function processEvent(event) {
                 console.log(' apiaiRequest 1 set string >>>> '+JSON.stringify(response.result));
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
-                responseParams = response.result.parameters.template;
+                let tmp = response.result.parameters.template;
+                responseParams =  tmp.replace('^','{');
+                
                 console.log('-------------------------------')
-                console.log('apiaiRequest responseParams >>>>>>>>  '+responseParams);
+                console.log('apiaiRequest responseParams >>>>>>>>  '+responseParams);        
                 console.log('-------------------------------')
+                
                 let action = response.result.action;
                 
                 console.log(' apiaiRequest response.result.action > '+response.result.action);
