@@ -23,6 +23,7 @@ const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
 
 const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSource: "fb"});
 const sessionIds = new Map();
+var responseParams;
 
 function processEvent(event) {
     var sender = event.sender.id.toString();
@@ -47,7 +48,7 @@ function processEvent(event) {
                 console.log(' apiaiRequest 1 set string >>>> '+JSON.stringify(response.result));
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
-                let responseParams = response.result.parameters.template;
+                responseParams = response.result.parameters.template;
                 console.log('-------------------------------')
                 console.log('apiaiRequest responseParams >>>>>>>>  '+JSON.stringify(responseParams));
                 console.log('-------------------------------')
@@ -142,7 +143,7 @@ function sendFBMessage(action, sender, messageData, callback) {
 
     var _myjson = {
             recipient: {id: sender},
-            message:  messageData
+            message:  responseParams//messageData
             //message: {"attachment":{"type":"image","payload":{"url":"https://holatiguan.com/uploads/images/2/0/-/20-di-hola-tiguan.png"}}}
             /*
             message: { "attachment":{"type":"template","payload":{
