@@ -49,9 +49,14 @@ function processEvent(event) {
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let tmp = response.result.parameters.template;
-                //responseParams =  tmp.replace('^','{');
-                responseParams = tmp.toString().replace(/^/g, "{");
-                console.log('tmp //////////// '+tmp);
+                               
+                String.prototype.replaceAll = function(str1, str2, ignore) 
+                {
+                    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+                } 
+                
+                responseParams = tmp.replaceAll("^", "{");
+            
                 console.log('-------------------------------')
                 console.log('apiaiRequest responseParams >>>>>>>>  '+responseParams);        
                 console.log('-------------------------------')
