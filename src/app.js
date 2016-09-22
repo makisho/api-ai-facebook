@@ -50,7 +50,7 @@ function processEvent(event) {
                 let responseData = response.result.fulfillment.data;
                 responseParams = response.result.parameters.template;
                 console.log('-------------------------------')
-                console.log('apiaiRequest responseParams >>>>>>>>  '+JSON.parse(responseParams));
+                console.log('apiaiRequest responseParams >>>>>>>>  '+responseParams);
                 console.log('-------------------------------')
                 let action = response.result.action;
                 
