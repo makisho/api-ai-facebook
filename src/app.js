@@ -50,6 +50,8 @@ function processEvent(event) {
                 let responseData = response.result.fulfillment.data;
                 let FBtemplate = response.result.parameters.FBtemplate;
                 let FBimage = response.result.parameters.FBimage;
+                let FBvideo = response.result.parameters.FBvideo;
+                let FBbutton = response.result.parameters.FBbutton;
                                
                 String.prototype.replaceAll = function(str1, str2, ignore) 
                 {
@@ -63,6 +65,8 @@ function processEvent(event) {
                 console.log(' apiaiRequest response.result.action > '+response.result.action);
                 console.log(' apiaiRequest FBtemplate > '+FBtemplate);
                 console.log(' apiaiRequest FBimage > '+FBimage);
+                console.log(' apiaiRequest FBvideo > '+FBvideo);
+                console.log(' apiaiRequest FBbutton > '+FBbutton);
                 
                 
                 
@@ -80,6 +84,22 @@ function processEvent(event) {
                     sendFBMessage(action, sender, {text: responseText});
                     
                     var r1 = FBimage.replaceAll("^", "{");
+                    responseParams = r1.replaceAll("*", "}");
+                    sendFBMessage(action, sender, responseParams); 
+                }
+                else if(FBvideo!=undefined){
+                   
+                    sendFBMessage(action, sender, {text: responseText});
+                    
+                    var r1 = FBvideo.replaceAll("^", "{");
+                    responseParams = r1.replaceAll("*", "}");
+                    sendFBMessage(action, sender, responseParams); 
+                }
+                else if(FBbutton!=undefined){
+                   
+                    sendFBMessage(action, sender, {text: responseText});
+                    
+                    var r1 = FBbutton.replaceAll("^", "{");
                     responseParams = r1.replaceAll("*", "}");
                     sendFBMessage(action, sender, responseParams); 
                 }
