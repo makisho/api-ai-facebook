@@ -69,7 +69,6 @@ function processEvent(event) {
                 console.log(' apiaiRequest FBbutton > '+FBbutton);
                 
                 
-                
                 if(FBtemplate!=undefined){
                     console.log('HAY FACEBOOK DATA');
                     var r1 = FBtemplate.replaceAll("^", "{");
