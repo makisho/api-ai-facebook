@@ -45,14 +45,12 @@ function processEvent(event) {
 
         apiaiRequest.on('response', (response) => {
             if (isDefined(response.result)) {
-                console.log(' apiaiRequest 1 set string >>>> '+JSON.stringify(response.result));
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let FBtemplate = response.result.parameters.FBtemplate;
                 let FBimage = response.result.parameters.FBimage;
                 let FBvideo = response.result.parameters.FBvideo;
                 let FBbutton = response.result.parameters.FBbutton;
-                console.log(response.result.parameters.FBbutton);
                                
                 String.prototype.replaceAll = function(str1, str2, ignore) 
                 {
@@ -100,6 +98,7 @@ function processEvent(event) {
                     
                     var r1 = FBbutton.replaceAll("^", "{");
                     responseParams = r1.replaceAll("*", "}");
+                    console.log(responseParams);
                     sendFBMessage(action, sender, responseParams); 
                 }
                 else if (isDefined(responseData) && isDefined(responseData.facebook)) {
